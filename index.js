@@ -7,11 +7,12 @@ const cors = require('cors');
 const app = express();
 app.use(express.json()); // Permite que el servidor entienda JSON
 app.use(cors());         // Permite conexiones de otros dominios (el frontend)
-const PORT = 15203;       // El puerto donde correrá el backend
+const PORT = process.env.PORT || 15203;       // El puerto donde correrá el backend (usa PORT de env en la nube)
 
 // --- 3. Configurar la conexión a la Base de Datos ---
 const db = mysql.createConnection({
     host: 'mysql-f96f28f-josuedaniel701-82d1.l.aivencloud.com',
+    port: 15203,
     user: 'avnadmin',         // Usuario por defecto de XAMPP/MySQL
     password: 'AVNS_PBCS4ponsFSxz8qSUNQ',         // Contraseña por defecto de XAMPP es vacía
     database: 'defaultdb'
@@ -458,5 +459,5 @@ app.post('/api/reportes/log', (req, res) => {
 
 // --- 5. Iniciar el servidor ---
 app.listen(PORT, () => {
-    console.log(`Servidor backend corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor backend corriendo en el puerto ${PORT}`);
 });
