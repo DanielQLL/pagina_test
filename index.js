@@ -2,11 +2,14 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const path = require('path');
 
 // --- 2. Configurar el servidor ---
 const app = express();
 app.use(express.json()); // Permite que el servidor entienda JSON
 app.use(cors());         // Permite conexiones de otros dominios (el frontend)
+// Servir archivos estáticos del frontend
+app.use(express.static(path.join(__dirname, 'cafeteria-frontend')));
 const PORT = process.env.PORT || 15203;       // El puerto donde correrá el backend (usa PORT de env en la nube)
 
 // --- 3. Configurar la conexión a la Base de Datos ---
@@ -458,6 +461,13 @@ app.post('/api/reportes/log', (req, res) => {
 });
 
 // --- 5. Iniciar el servidor ---
+// Fallback para rutas del frontend (Single Page App)
+app.get('*', (req, res) => {
+    const indexPath = path.join(__dirname, 'cafeteria-frontend', 'index.html');
+    res.sendFile(indexPath, err => {
+        if (err) res.status(404).send('Not found');
+    });
+});
 app.listen(PORT, () => {
     console.log(`Servidor backend corriendo en el puerto ${PORT}`);
 });
