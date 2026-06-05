@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Cajero - CaféU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="cajero.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <h1>Módulo de Cajero</h1>
+        <div>
+            <span class="user-info">Cajero: <strong id="username-display">...</strong></span>
+            <a href="#" id="logout-link">Cerrar Sesión</a>
+        </div>
+    </nav>
+
+    <nav class="cajero-nav">
+        <button id="nav-tpv" class="nav-link active">Venta Rápida (TPV)</button>
+        <button id="nav-pendientes" class="nav-link">Pedidos Pendientes</button>
+    </nav>
+
+    <main>
+        <!-- Sección TPV -->
+        <section id="tpv-section" class="page-section active">
+            <div class="tpv-container">
+                <section id="product-list" class="product-grid">
+                    <p style="grid-column: 1/-1; text-align: center; color: #666; padding: 2rem;">
+                        <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: #FF6B6B;"></i><br><br>
+                        Cargando productos...
+                    </p>
+                </section>
+                
+                <aside class="order-summary">
+                    <h2>Pedido Actual</h2>
+                    <ul id="cart-items">
+                        <li id="empty-cart-msg">
+                            <i class="fas fa-shopping-cart" style="font-size: 1.5rem; color: #d1d5db; margin-right: 10px;"></i>
+                            El carrito está vacío
+                        </li>
+                    </ul>
+                    <div class="order-total">
+                        <div class="total-row">
+                            <span>TOTAL:</span>
+                            <span id="total-price">S/ 0.00</span>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="clear-cart-btn" class="button">Limpiar</button>
+                            <button id="process-payment-btn" class="button">Registrar Venta</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- Sección Pedidos Pendientes -->
+        <section id="pendientes-section" class="page-section">
+            <div class="pendientes-container">
+                <h2>Pedidos Pendientes de Clientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-hashtag"></i> ID Pedido</th>
+                            <th><i class="fas fa-calendar-alt"></i> Fecha</th>
+                            <th><i class="fas fa-user"></i> Cliente</th>
+                            <th><i class="fas fa-money-bill-wave"></i> Total</th>
+                            <th><i class="fas fa-cog"></i> Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendientes-table-body">
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 3rem; color: #9ca3af;">
+                                <i class="fas fa-inbox" style="font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3;"></i>
+                                No hay pedidos pendientes
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="cajero.js" defer></script>
+</body>
+</html>

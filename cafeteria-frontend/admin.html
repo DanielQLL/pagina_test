@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h1><i class="fas fa-mug-hot"></i> Admin</h1>
+        <nav>
+            <a href="#" id="nav-inventario" class="nav-link active">
+                <i class="fas fa-boxes"></i>
+                Gestionar Inventario
+            </a>
+            <a href="#" id="nav-reportes" class="nav-link">
+                <i class="fas fa-chart-line"></i>
+                Generar Reportes
+            </a>
+        </nav>
+        <div class="logout">
+            <a href="index.html">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <section id="inventario-section" class="page-section active">
+            <div class="container">
+                <div class="form-container">
+                    <h2 id="form-title">
+                        <i class="fas fa-plus-circle"></i> Registrar Nuevo Producto
+                    </h2>
+                    <form id="product-form">
+                        <input type="hidden" id="product-id">
+                        <div class="input-group">
+                            <label for="nombre">
+                                <i class="fas fa-tag"></i> Nombre del Producto
+                            </label>
+                            <input type="text" id="nombre" placeholder="Ej: Café Americano" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="categoria">
+                                <i class="fas fa-list"></i> Categoría
+                            </label>
+                            <input type="text" id="categoria" placeholder="Ej: Bebidas">
+                        </div>
+                        <div class="input-group">
+                            <label for="precio">
+                                <i class="fas fa-dollar-sign"></i> Precio (S/)
+                            </label>
+                            <input type="number" id="precio" step="0.01" placeholder="0.00" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="stock">
+                                <i class="fas fa-warehouse"></i> Stock Inicial
+                            </label>
+                            <input type="number" id="stock" step="1" placeholder="0" required>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="submit" id="save-btn" class="button">
+                                <i class="fas fa-save"></i>
+                                Guardar Producto
+                            </button>
+                            <button type="button" id="cancel-edit-btn" class="button">
+                                <i class="fas fa-times"></i>
+                                Cancelar Edición
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-container">
+                    <h2>
+                        <i class="fas fa-inventory"></i> Inventario Actual
+                    </h2>
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-hashtag"></i> ID</th>
+                                <th><i class="fas fa-coffee"></i> Nombre</th>
+                                <th><i class="fas fa-folder"></i> Categoría</th>
+                                <th><i class="fas fa-money-bill-wave"></i> Precio</th>
+                                <th><i class="fas fa-boxes"></i> Stock</th>
+                                <th><i class="fas fa-cog"></i> Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los productos se cargarán dinámicamente aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="reportes-section" class="page-section">
+            <div class="container">
+                <h2>
+                    <i class="fas fa-file-invoice-dollar"></i> Reporte de Ventas
+                </h2>
+                
+                <div id="report-controls">
+                    <button id="generate-pdf-btn" class="button">
+                        <i class="fas fa-file-pdf"></i>
+                        Generar PDF
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table id="reportes-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-receipt"></i> Pedido ID</th>
+                                <th><i class="fas fa-calendar-alt"></i> Fecha</th>
+                                <th><i class="fas fa-shopping-bag"></i> Producto</th>
+                                <th><i class="fas fa-sort-numeric-up"></i> Cantidad</th>
+                                <th><i class="fas fa-dollar-sign"></i> Subtotal</th>
+                                <th><i class="fas fa-user-tie"></i> Cajero</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Los datos del reporte se cargarán aquí -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dependencias para PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+    
+    <script src="admin.js"></script>
+</body>
+</html>

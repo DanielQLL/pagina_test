@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaféU - Tu Tienda Universitaria</title>
+    <!-- Fuente Poppins para ese look "Dashboard" limpio y redondeado -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Vinculación del CSS externo -->
+    <link rel="stylesheet" href="cliente.css">
+</head>
+<body>
+
+    <!-- SIDEBAR LATERAL -->
+    <aside class="sidebar">
+        <div class="brand">
+            <i class="fas fa-store"></i> <!-- Cambiado icono a tienda/store -->
+            <h1>CaféU</h1>
+        </div>
+        
+        <ul class="nav-links">
+            <li>
+                <button class="nav-btn active" id="nav-inicio" onclick="switchSection('inicio', this)">
+                    <i class="fas fa-home"></i> Inicio
+                </button>
+            </li>
+            <li>
+                <button class="nav-btn" onclick="switchSection('nosotros', this)">
+                    <i class="fas fa-users"></i> Quiénes Somos
+                </button>
+            </li>
+            <li>
+                <button class="nav-btn" id="nav-pedido" onclick="switchSection('pedido', this)">
+                    <i class="fas fa-shopping-basket"></i> Hacer Pedido
+                </button>
+            </li>
+            <li>
+                <button class="nav-btn" id="nav-historial" onclick="switchSection('historial', this)">
+                    <i class="fas fa-history"></i> Historial
+                </button>
+            </li>
+            <li>
+                <button class="nav-btn" onclick="switchSection('contacto', this)">
+                    <i class="fas fa-envelope"></i> Contacto
+                </button>
+            </li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar">C</div>
+            <div style="font-size: 0.9rem;">
+                <div style="color:white; font-weight:600;" id="username-display">Cargando...</div>
+                <div style="color:#a0a0a0; font-size: 0.8rem;">Online</div>
+            </div>
+            <a href="#" id="logout-link" style="margin-left:auto; color: #ff7e5f;"><i class="fas fa-sign-out-alt"></i></a>
+        </div>
+    </aside>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="main-content">
+        
+        <!-- SECCIÓN: INICIO (Bienvenida + Misión/Visión) -->
+        <section id="inicio-section" class="page-section active">
+            <div class="section-header">
+                <h2>¡Hola de nuevo! 👋</h2>
+                <p class="subtitle">Recarga energías para tus clases.</p>
+            </div>
+
+            <!-- Hero Section Más Grande y Descriptiva -->
+            <div class="welcome-hero" style="padding: 4rem; min-height: 350px;">
+                <div class="hero-text" style="max-width: 65%;">
+                    <h3 style="font-size: 3rem; line-height: 1.2; margin-bottom: 1rem;">Tu pausa favorita<br>en la Universidad</h3>
+                    <p style="font-size: 1.3rem; margin-bottom: 2rem;">¿Hambre entre clases? Tenemos sándwiches, empanadas calientes, snacks y el café que necesitas para seguir estudiando.</p>
+                    <button class="cta-button" style="padding: 1.2rem 2.5rem; font-size: 1.1rem;" onclick="document.getElementById('nav-pedido').click()">
+                        <i class="fas fa-utensils"></i> Ver Menú
+                    </button>
+                </div>
+                <!-- Icono representativo más grande -->
+                <i class="fas fa-hamburger" style="font-size: 10rem; color: #f0f2f5; opacity: 0.8;"></i>
+            </div>
+
+            <!-- Sección Misión y Visión (Agregada aquí) -->
+            <div class="about-grid" style="margin-top: 2rem;">
+                <div class="about-card" style="border-left: 5px solid var(--primary-orange);">
+                    <h3><i class="fas fa-bullseye"></i> Nuestra Misión</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">
+                        Brindar a la comunidad universitaria alimentos frescos, rápidos y deliciosos. Nos esforzamos por ser el aliado perfecto en tu día a día académico, ofreciendo calidad y precios accesibles.
+                    </p>
+                </div>
+                <div class="about-card" style="border-left: 5px solid var(--purple-accent);">
+                    <h3><i class="fas fa-eye"></i> Nuestra Visión</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">
+                        Ser reconocidos como el punto de encuentro número uno dentro del campus, innovando constantemente en nuestra oferta de snacks y comidas para acompañarte en cada semestre.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Información Rápida Adicional -->
+            <div class="about-grid" style="margin-top: 2rem;">
+                <div class="about-card" style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white;">
+                    <h3><i class="fas fa-star"></i> Lo Nuevo</h3>
+                    <p>¡Llegaron las empanadas de lomo saltado! Pruébalas antes de que se acaben.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-clock"></i> Horario de Atención</h3>
+                    <p style="font-size: 1.5rem; font-weight: bold; color: var(--text-dark);">07:00 AM - 09:00 PM</p>
+                    <p style="color: #2ecc71; font-weight: 500;">Abierto ahora</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: HACER PEDIDO -->
+        <section id="pedido-section" class="page-section">
+            <div class="section-header">
+                <h2>Menú Digital</h2>
+                <p class="subtitle">Sándwiches, bebidas y más.</p>
+            </div>
+
+            <div class="tpv-wrapper">
+                <!-- Grid de Productos -->
+                <div class="products-grid" id="product-list">
+                    <div style="grid-column: 1/-1; text-align: center; padding: 2rem;">
+                        <i class="fas fa-spinner fa-spin"></i> Cargando productos...
+                    </div>
+                </div>
+
+                <!-- Panel Carrito -->
+                <aside class="cart-panel">
+                    <div class="header-action">
+                        <h3>Tu Bandeja</h3>
+                        <button id="clear-cart-btn"><i class="fas fa-trash"></i> Vaciar</button>
+                    </div>
+                    
+                    <ul id="cart-items" style="list-style: none; margin-bottom: 2rem;">
+                        <li id="empty-cart-msg" style="text-align: center; color: #a0a0a0;">Tu bandeja está vacía</li>
+                    </ul>
+                    
+                    <div style="border-top: 2px solid #f0f0f0; padding-top: 1rem;">
+                        <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 1.2rem; margin-bottom: 1.5rem;">
+                            <span>Total</span>
+                            <span id="total-price" style="color: var(--primary-orange);">S/ 0.00</span>
+                        </div>
+                        <button id="process-payment-btn" class="cta-button" style="width: 100%;">Confirmar Pedido</button>
+                    </div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: HISTORIAL -->
+        <section id="historial-section" class="page-section">
+            <div class="section-header">
+                <h2>Tus Pedidos Anteriores</h2>
+            </div>
+            <div class="about-card" style="padding: 0; overflow: hidden;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead style="background: #f8f9fa; border-bottom: 1px solid #eee;">
+                        <tr>
+                            <th style="padding: 1.5rem; text-align: left;">ID</th>
+                            <th style="padding: 1.5rem; text-align: left;">Fecha</th>
+                            <th style="padding: 1.5rem; text-align: left;">Productos</th>
+                            <th style="padding: 1.5rem; text-align: left;">Estado</th>
+                            <th style="padding: 1.5rem; text-align: left;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-table-body">
+                        <!-- Se llena con JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: NOSOTROS (Mantenida breve ya que Misión/Visión está en inicio) -->
+        <section id="nosotros-section" class="page-section">
+            <div class="section-header"><h2>El Equipo CaféU</h2></div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>Nuestro Compromiso</h3>
+                    <p>Trabajamos para que cada estudiante y profesor tenga acceso a comida de calidad sin salir de la universidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <section id="contacto-section" class="page-section">
+            <div class="section-header"><h2>Contacto</h2></div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i> 
+                        <p>+51 993 776 009</p>
+                    </div>
+                    <div class="info-item">
+                         <i class="fas fa-envelope"></i>
+                         <p>contacto@cafeu.com</p>
+                    </div>
+                    <div class="info-item">
+                         <i class="fas fa-map-marker-alt"></i>
+                         <p>Patio de Comidas, Pabellón B</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Mensaje enviado (Simulación)');">
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Nombre Completo</label>
+                            <input type="text" placeholder="Ej: Juan Pérez">
+                        </div>
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Correo Electrónico</label>
+                            <input type="email" placeholder="Ej: juan@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label style="display:block; margin-bottom:0.5rem; font-weight:500;">Mensaje</label>
+                            <textarea rows="4" placeholder="¿En qué podemos ayudarte?"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="border:none; cursor: pointer; width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Vinculación del JS externo -->
+    <script src="cliente.js" defer></script>
+</body>
+</html>
