@@ -38,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- URLs API ---
     // Asegúrate de que tu backend esté corriendo en este puerto
-    const API_PRODUCTOS_URL = 'http://localhost:3001/api/productos';
-    const API_PEDIDOS_URL = 'http://localhost:3001/api/pedidos';
-    const API_HISTORIAL_URL = `http://localhost:3001/api/pedidos/historial/${clienteId}`;
+    const API_PRODUCTOS_URL = '/api/productos';
+    const API_PEDIDOS_URL = '/api/pedidos';
+    const API_HISTORIAL_URL = `/api/pedidos/historial/${clienteId}`;
 
     // --- ESTADO ---
     let carrito = []; 

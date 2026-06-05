@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const stockInput = document.getElementById('stock');
     const saveBtn = document.getElementById('save-btn');
     const cancelBtn = document.getElementById('cancel-edit-btn');
-    const API_PRODUCTOS_URL = 'http://localhost:3001/api/productos';
+    const API_PRODUCTOS_URL = '/api/productos';
 
     // --- Referencias a elementos de REPORTES ---
     const reportesTableBody = document.querySelector('#reportes-table tbody');
     const generatePdfBtn = document.getElementById('generate-pdf-btn');
-    const API_REPORTES_URL = 'http://localhost:3001/api/reportes/ventas';
+    const API_REPORTES_URL = '/api/reportes/ventas';
 
 
     // =======================================================
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             // No necesitamos esperar (await) a que esto termine
             // Lo mandamos y seguimos con lo nuestro
-            fetch('http://localhost:3001/api/reportes/log', {
+            fetch('/api/reportes/log', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(reporteData)

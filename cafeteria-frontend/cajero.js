@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('username-display').textContent = cajeroUsuario;
 
     // --- URLs del API ---
-    const API_PRODUCTOS_URL = 'http://localhost:3001/api/productos';
-    const API_PEDIDOS_URL = 'http://localhost:3001/api/pedidos';
-    const API_PENDIENTES_URL = 'http://localhost:3001/api/pedidos/pendientes';
-    const API_COMPLETAR_URL = 'http://localhost:3001/api/pedidos/completar'; // Base URL
+    const API_PRODUCTOS_URL = '/api/productos';
+    const API_PEDIDOS_URL = '/api/pedidos';
+    const API_PENDIENTES_URL = '/api/pedidos/pendientes';
+    const API_COMPLETAR_URL = '/api/pedidos/completar'; // Base URL
 
     // --- Estado de la aplicación ---
     let carrito = []; 

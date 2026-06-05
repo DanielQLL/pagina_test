@@ -804,8 +804,8 @@
                 errorMessage.textContent = '';
 
                 try {
-                    // 6. Enviar los datos al Backend (el que corre en localhost:3001)
-                    const response = await fetch('http://localhost:3001/api/login', {
+                    // 6. Enviar los datos al Backend
+                    const response = await fetch('/api/login', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

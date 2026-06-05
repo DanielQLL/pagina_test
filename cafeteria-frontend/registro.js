@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 2. Enviar al nuevo endpoint del backend
         try {
-            const response = await fetch('http://localhost:3001/api/clientes/registro', {
+            const response = await fetch('/api/clientes/registro', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datosCliente)
