@@ -7,14 +7,14 @@ const cors = require('cors');
 const app = express();
 app.use(express.json()); // Permite que el servidor entienda JSON
 app.use(cors());         // Permite conexiones de otros dominios (el frontend)
-const PORT = 3001;       // El puerto donde correrá el backend
+const PORT = 15203;       // El puerto donde correrá el backend
 
 // --- 3. Configurar la conexión a la Base de Datos ---
 const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',         // Usuario por defecto de XAMPP/MySQL
-    password: '',         // Contraseña por defecto de XAMPP es vacía
-    database: 'cafeteria_db'
+    host: 'mysql-f96f28f-josuedaniel701-82d1.l.aivencloud.com',
+    user: 'avnadmin',         // Usuario por defecto de XAMPP/MySQL
+    password: 'AVNS_PBCS4ponsFSxz8qSUNQ',         // Contraseña por defecto de XAMPP es vacía
+    database: 'defaultdb'
 });
 
 db.connect(err => {
@@ -22,7 +22,7 @@ db.connect(err => {
         console.error('Error al conectar a la DB:', err);
         return;
     }
-    console.log('Conectado exitosamente a la base de datos cafeteria_db');
+    console.log('Conectado exitosamente a la base de datos defaultdb');
 });
 
 // --- 4. Crear las Rutas (Endpoints) ---
